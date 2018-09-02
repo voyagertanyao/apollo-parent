@@ -85,4 +85,46 @@ public class TraversalUtils {
             System.out.println("Node : " + stackTraversal.pop().getName());
         }
     }
+
+    /**
+     * 前序遍历-递归
+     * @param node
+     */
+    public static void preTraversalRecursion(Node node) {
+        if ( node == null) {
+            return;
+        }
+
+        System.out.println("Node : " + node.getName());
+        preTraversalRecursion(node.getLeftChild());
+        preTraversalRecursion(node.getRightChild());
+    }
+
+    /**
+     * 中序遍历-递归
+     * @param node
+     */
+    public static void inTraversalRecursion(Node node) {
+        if ( node == null) {
+            return;
+        }
+
+        inTraversalRecursion(node.getLeftChild());
+        System.out.println("Node : " + node.getName());
+        inTraversalRecursion(node.getRightChild());
+    }
+
+    /**
+     * 后序遍历-递归
+     * @param node
+     */
+    public static void afterTraversalRecursion(Node node) {
+        if ( node == null) {
+            return;
+        }
+
+        afterTraversalRecursion(node.getLeftChild());
+        afterTraversalRecursion(node.getRightChild());
+        System.out.println("Node : " + node.getName());
+    }
 }

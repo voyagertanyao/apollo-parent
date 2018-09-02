@@ -1,6 +1,5 @@
 package com.voyager.core.tree;
 
-import com.voyager.common.utils.tree.TraversalUtils;
 import com.voyager.model.tree.Node;
 
 public class NodeTest {
@@ -42,6 +41,10 @@ public class NodeTest {
 
         //TraversalUtils.preTraversal(root);
         //TraversalUtils.inTraversal(root);
-        TraversalUtils.afterTraversal(null);
+        //TraversalUtils.afterTraversal(null);
+
+        //TraversalUtils.afterTraversalRecursion(root);
+        //TraversalUtils.inTraversalRecursion(root);
+        //TraversalUtils.preTraversalRecursion(root);
     }
 }
