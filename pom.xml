@@ -11,6 +11,7 @@
   <modules>
     <module>apollo-pro-core</module>
       <module>apollo-pro-common</module>
+      <module>apollo-pro-model</module>
   </modules>
 
   <dependencyManagement>

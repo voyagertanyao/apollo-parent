@@ -1,4 +1,4 @@
-package com.voyager.common.utils;
+package com.voyager.common.utils.redis;
 
 import io.lettuce.core.RedisClient;
 import io.lettuce.core.RedisURI;

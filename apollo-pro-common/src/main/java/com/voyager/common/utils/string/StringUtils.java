@@ -1,4 +1,4 @@
-package com.voyager.common.utils;
+package com.voyager.common.utils.string;
 
 /**
  * String工具类

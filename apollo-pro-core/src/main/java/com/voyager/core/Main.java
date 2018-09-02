@@ -1,6 +1,6 @@
 package com.voyager.core;
 
-import com.voyager.common.utils.StringUtils;
+import com.voyager.common.utils.string.StringUtils;
 
 public class Main {
     public static void main(String[] args) {
