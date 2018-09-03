@@ -1,6 +1,11 @@
 package com.voyager.core.tree;
 
+import com.voyager.common.utils.tree.TraversalUtils;
 import com.voyager.model.tree.Node;
+import com.voyager.model.tree.Tree;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class NodeTest {
 
@@ -46,5 +51,14 @@ public class NodeTest {
         //TraversalUtils.afterTraversalRecursion(root);
         //TraversalUtils.inTraversalRecursion(root);
         //TraversalUtils.preTraversalRecursion(root);
+        String nameStr = new String("ABCD#E###F##G#HIJ####");
+        char[] names = nameStr.toCharArray();
+        List<Tree> nodes = new ArrayList<>();
+        for(char name : names) {
+            nodes.add(new Tree(String.valueOf(name)));
+        }
+        Node root = TraversalUtils.generateBiTreePro(nodes, new Tree("#"));
+
+        TraversalUtils.preTraversal(root);
     }
 }

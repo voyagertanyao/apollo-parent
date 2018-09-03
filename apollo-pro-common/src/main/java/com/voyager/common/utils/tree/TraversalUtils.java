@@ -2,6 +2,7 @@ package com.voyager.common.utils.tree;
 
 import com.voyager.model.tree.Node;
 
+import java.util.List;
 import java.util.Stack;
 
 public class TraversalUtils {
@@ -10,8 +11,8 @@ public class TraversalUtils {
      * 前序遍历
      * @param root
      */
-    public static void preTraversal(Node root) {
-        Stack<Node> stack = new Stack<Node>();
+    public static <T> void preTraversal(Node<T> root) {
+        Stack<Node<T>> stack = new Stack<>();
         if (root == null) {
             System.out.println("root Node is empty");
             return;
@@ -21,7 +22,7 @@ public class TraversalUtils {
 
         while(!stack.isEmpty()) {
             Node current = stack.pop();
-            System.out.println("Node : " + current.getName());
+            System.out.println("Node : " + (T)current.getValue());
             if (current.getRightChild() != null) {
                 stack.push(current.getRightChild());
             }
@@ -35,8 +36,8 @@ public class TraversalUtils {
      * 中序遍历
      * @param root
      */
-    public static void inTraversal(Node root) {
-        Stack<Node> stack = new Stack<Node>();
+    public static <T> void inTraversal(Node<T> root) {
+        Stack<Node<T>> stack = new Stack<Node<T>>();
         if (root == null) {
             System.out.println("root Node is empty");
             return;
@@ -51,7 +52,7 @@ public class TraversalUtils {
                 current = current.getLeftChild();
             } else {
                 current = stack.pop();
-                System.out.println("Node : " + current.getName());
+                System.out.println("Node : " + (T)current.getValue());
                 current = current.getRightChild();
             }
         }
@@ -61,9 +62,9 @@ public class TraversalUtils {
      * 后序遍历
      * @param root
      */
-    public static void afterTraversal(Node root) {
-        Stack<Node> stack = new Stack<Node>();
-        Stack<Node> stackTraversal = new Stack<Node>();
+    public static <T> void afterTraversal(Node<T> root) {
+        Stack<Node<T>> stack = new Stack<Node<T>>();
+        Stack<Node<T>> stackTraversal = new Stack<Node<T>>();
         if (root == null) {
             System.out.println("root Node is empty");
             return;
@@ -82,7 +83,7 @@ public class TraversalUtils {
             }
         }
         while(!stackTraversal.isEmpty()) {
-            System.out.println("Node : " + stackTraversal.pop().getName());
+            System.out.println("Node : " + (T)stackTraversal.pop().getValue().toString());
         }
     }
 
@@ -90,12 +91,12 @@ public class TraversalUtils {
      * 前序遍历-递归
      * @param node
      */
-    public static void preTraversalRecursion(Node node) {
+    public static <T> void preTraversalRecursion(Node<T> node) {
         if ( node == null) {
             return;
         }
 
-        System.out.println("Node : " + node.getName());
+        System.out.println("Node : " + (T)node.getValue().toString());
         preTraversalRecursion(node.getLeftChild());
         preTraversalRecursion(node.getRightChild());
     }
@@ -104,13 +105,13 @@ public class TraversalUtils {
      * 中序遍历-递归
      * @param node
      */
-    public static void inTraversalRecursion(Node node) {
+    public static <T> void inTraversalRecursion(Node<T> node) {
         if ( node == null) {
             return;
         }
 
         inTraversalRecursion(node.getLeftChild());
-        System.out.println("Node : " + node.getName());
+        System.out.println("Node : " + (T)node.getValue().toString());
         inTraversalRecursion(node.getRightChild());
     }
 
@@ -118,13 +119,36 @@ public class TraversalUtils {
      * 后序遍历-递归
      * @param node
      */
-    public static void afterTraversalRecursion(Node node) {
+    public static <T >void afterTraversalRecursion(Node<T> node) {
         if ( node == null) {
             return;
         }
 
         afterTraversalRecursion(node.getLeftChild());
         afterTraversalRecursion(node.getRightChild());
-        System.out.println("Node : " + node.getName());
+        System.out.println("Node : " + (T)node.getValue().toString());
     }
+
+    /**
+     * 构造二叉树-前序
+     * @param elements
+     * @return
+     */
+    public static <T> Node<T> generateBiTreePro(List<T> elements, T value) {
+
+        Node<T> node = new Node<T>(value);
+
+        if (elements != null && elements.size() > 0) {
+            node = new Node<T>();
+            node.setValue(elements.remove(0));
+            if ( (node.getValue()).equals(value)) {
+                return node;
+            }
+            node.setLeftChild(generateBiTreePro(elements, value));
+            node.setRightChild(generateBiTreePro(elements, value));
+        }
+
+        return node;
+    }
+
 }

@@ -1,22 +1,23 @@
 package com.voyager.model.tree;
 
-public class Node {
-    private String name;
+public class Node<T> {
+    private T value;
     private Node leftChild;
     private Node rightChild;
 
-    public Node(String name){
-        this.name = name;
+    public Node() {super();}
+
+    public Node(T value){
+        this.value = value;
     }
 
-    public String getName() {
-        return name;
+    public T getValue() {
+        return value;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setValue(T value) {
+        this.value = value;
     }
-
     public Node getLeftChild() {
         return leftChild;
     }
